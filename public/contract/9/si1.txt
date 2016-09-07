@@ -1,0 +1,19 @@
+<input type="text" id="so1" value="10000">
+<input type="text" id="demo" onkeyup="result1()">
+<input type="text" id="result" />
+<script>
+function keydownFunction() {
+    document.getElementById("demo").style.backgroundColor = "red";
+}
+
+function keyupFunction() {
+    document.getElementById("demo").style.backgroundColor = "green";
+}
+function result1(){
+   var so1= document.getElementById("so1").value;
+   var soluong= document.getElementById("demo").value;
+var ketqua = so1 *soluong;
+   document.getElementById("result").value = ketqua ;
+}
+
+</script>

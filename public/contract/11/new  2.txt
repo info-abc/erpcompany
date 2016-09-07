@@ -1,0 +1,7 @@
+làm việc với android và có hiểu biết về php, mysql, unity và có thể làm việc theo nhóm hoắc làm việc độc lập
+môt số dự án từng làm:
+ + làm app chợ Online
+ + app game ai là triệu phú
+ + app game dừng để tiền rơi
+ + từng tham gia phát triển ứng dụng quản lý công ty ERP_System
+ + app giả camera
