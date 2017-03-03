@@ -16,7 +16,6 @@ Route::get('/', function()
 	return View::make('admin.layout.login');
 });
 
-
 Route::group(['prefix' => 'admin'], function () {
 	Route::get('/login', array('uses' => 'AdminController@login', 'as' => 'admin.login'));
 	Route::post('/login', array('uses' => 'AdminController@doLogin'));

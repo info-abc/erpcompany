@@ -269,6 +269,7 @@ class ManagementController extends AdminController {
 			'username' => 'required',
 		);
 		$input = Input::except('_token');
+		$input_User = CommonUser::getInput($input);
 		$validator = Validator::make($input,$rules);
 		if($validator->fails()) {
 			return Redirect::action('ManagementController@updateadmin', $id)
