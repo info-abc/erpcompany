@@ -11,10 +11,10 @@
 |
 */
 
-// Route::get('/', function()
-// {
-// 	return View::make('hello');
-// });
+Route::get('/', function()
+{
+	return View::make('admin.layout.login');
+});
 
 
 Route::group(['prefix' => 'admin'], function () {
