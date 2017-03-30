@@ -1,25 +1,15 @@
-<IfModule mod_rewrite.c>
+RewriteEngine On
 
-    #php_value upload_max_filesize = 100M
-    #php_value post_max_size = 100M
+# Redirect Trailing Slashes...
+RewriteRule ^(.*)/$ /$1 [L,R=301]
 
-    <IfModule mod_negotiation.c>
-        Options -MultiViews
-    </IfModule>
+# Handle Front Controller...
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^ index.php [L]
 
-    RewriteEngine On
-
-    # Redirect Trailing Slashes...
-    RewriteRule ^(.*)/$ /$1 [L,R=301]
-
-    # Handle Front Controller...
-    RewriteCond %{REQUEST_FILENAME} !-d
-    RewriteCond %{REQUEST_FILENAME} !-f
-    RewriteRule ^ index.php [L]
-	
-	# Chuyen www ve dang none w
-	Options +FollowSymLinks
-	RewriteBase /
-	RewriteCond %{HTTP_HOST} ^www.abc-erp.tk$ [NC]
-	RewriteRule ^(.*)$ http://abc-erp.tk/ [R=301,L]
-</IfModule>
+# Chuyen www ve dang none w
+Options +FollowSymLinks
+RewriteBase /
+RewriteCond %{HTTP_HOST} ^www\.(.+)$ [NC]
+RewriteRule ^ http://%1%{REQUEST_URI} [R=301,L]
