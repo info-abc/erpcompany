@@ -8,7 +8,12 @@ class CommonContract {
 		return Partner::where('type', TYPE_PARTNER_2)->where('parent_id', null)->lists('name', 'id');
 	}
 	public static function getNamePartnerId($id){
-		return Partner::find($id)->name;
+		$p = Partner::find($id);
+		if($p) {
+			return $p->name;
+		} else {
+			return '';
+		}
 	}
 	// public static function getNamePartnerProvidedId($id){
 	// 	return Partner::find($id)->name;

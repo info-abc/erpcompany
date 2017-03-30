@@ -1,7 +1,7 @@
 <IfModule mod_rewrite.c>
 
-    php_value upload_max_filesize = 100M
-    php_value post_max_size = 100M
+    #php_value upload_max_filesize = 100M
+    #php_value post_max_size = 100M
 
     <IfModule mod_negotiation.c>
         Options -MultiViews
@@ -16,4 +16,10 @@
     RewriteCond %{REQUEST_FILENAME} !-d
     RewriteCond %{REQUEST_FILENAME} !-f
     RewriteRule ^ index.php [L]
+	
+	# Chuyen www ve dang none w
+	Options +FollowSymLinks
+	RewriteBase /
+	RewriteCond %{HTTP_HOST} ^www.abc-erp.tk$ [NC]
+	RewriteRule ^(.*)$ http://abc-erp.tk/ [R=301,L]
 </IfModule>

@@ -22,11 +22,23 @@ class CommonSalary {
 	}
 	public static function getNameDep($depId)
 	{
-		return Department::find($depId)->name;
+		$dep = Department::find($depId);
+		if($dep) {
+			return $dep->name;
+		}
+		else {
+			return '';
+		}
 	}
 	public static function getNameRegency($regencyId)
 	{
-		return Regency::find($regencyId)->name;
+		$reg = Regency::find($regencyId);
+		if($reg) {
+			return $reg->name;
+		}
+		else {
+			return '';
+		}
 	}
 	public static function getTypeDepRegency()
 	{
@@ -194,7 +206,12 @@ class CommonSalary {
 	}
 	public static function getNameUser($user_id)
 	{
-		return User::find($user_id)->username;
+		$user = User::find($user_id);
+		if($user) {
+			return $user->username;
+		} else {
+			return '';
+		}
 	}
 	public static function getAllNameDep()
 	{
@@ -206,21 +223,43 @@ class CommonSalary {
 	}
 	public static function getidDepRegPartner($data)
 	{
-		return DepRegencyUserParent::where('user_id',  $data->user_id)->where('dep_id', $data->dep_id)->first()->id;
+		$data = DepRegencyUserParent::where('user_id',  $data->user_id)->where('dep_id', $data->dep_id)->first();
+		if($data) {
+			return $data->id;
+		} else {
+			return 0;
+		}
 	}
 	public static function getNameUserDate($value)
 	{
-		if(isset($value->user_id))
-			return User::find($value->user_id)->username;
-		else
-			return User::find($value->model_id)->username;
+		if(isset($value->user_id)) {
+			$user = User::find($value->user_id);
+			if($user) {
+				return $user->username;
+			} else {
+				return '';
+			}
+		}
+		else {
+			$user = User::find($value->model_id);
+			if($user) {
+				return $user->username;
+			} else {
+				return '';
+			}
+		}
 	}
 	public static function getSalaryUserDate($value)
 	{
 		$input = $value;
 		if(isset($value->user_id))
 		{
-			return SalaryUser::find($input->id)->salary;
+			$s = SalaryUser::find($input->id);
+			if($s) {
+				return $s->salary;
+			} else {
+				return 0;
+			}
 		}
 		elseif (isset($value->model_id)) {
 			if($value->salary_edit){

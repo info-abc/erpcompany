@@ -32,12 +32,18 @@
 						<tr>
 							<td>{{ $value->id }}</td>
 							<td>{{ $value->name }}</td>
-							@if($typeReport = TypeReport::find($value->type_report_id))
+							<?php $typeReport = TypeReport::find($value->type_report_id); ?>
+							@if($typeReport)
 								<td>{{ $typeReport->name }}</td>
 							@else
 								<td>Chưa có thể loại báo cáo</td>
 							@endif
+							<?php $user = User::find($value->user_id); ?>
+							@if($user)
 							<td>{{ User::find($value->user_id)->username }}</td>
+							@else
+							<td></td>
+							@endif
 							<td>
 								<a href="{{ action('ReportController@show', $value->id) }}" class="btn btn-primary">View</a>
 								@if(User::isAdmin() == ROLE_ADMIN)
